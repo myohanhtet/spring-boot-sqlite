@@ -1,0 +1,10 @@
+server:
+  port: 8834
+spring:
+  datasource:
+    url: jdbc:sqlite:test.db
+    driver-class-name: org.sqlite.JDBC
+    username: springuser
+    password: ThePassword
+  jpa:
+    database-platform: com.myohanhtet.dirctonary.config.SQLiteDialect
