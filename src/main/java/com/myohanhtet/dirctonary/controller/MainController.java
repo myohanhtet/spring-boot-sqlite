@@ -32,12 +32,12 @@ public class MainController {
         return "Saved";
     }
 
-    @PostMapping(path = "/entomm")
-    public Dictionary en2mm(@RequestBody String en){
-
-       return dictionaryRepository.findByWord(en);
-
-    }
+//    @PostMapping(path = "/entomm")
+//    public List<Dictionary> en2mm(@RequestBody String en){
+//
+//       return dictionaryRepository.findByWord_enContaining(en);
+//
+//    }
 
 
     @GetMapping(path = "/upload")

@@ -9,7 +9,8 @@ spring:
     initialization-mode: always
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
+    generate-ddl: false
     database-platform: com.myohanhtet.dirctonary.config.SQLiteDialect
 
 

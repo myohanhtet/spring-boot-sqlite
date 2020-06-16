@@ -16,16 +16,17 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @SpringBootApplication
-@Sql({"schema.sql", "data.sql"})
+//@Sql({"schema.sql", "data.sql"})
 public class Application {
 
     @Autowired
     private static CSVService fileService;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
 
         SpringApplication.run(Application.class, args);
 
     }
+
 
 }
