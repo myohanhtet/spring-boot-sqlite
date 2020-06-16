@@ -1,53 +1,50 @@
 package com.myohanhtet.dirctonary.controller;
 
-import com.myohanhtet.dirctonary.helper.CSVHelper;
 import com.myohanhtet.dirctonary.model.Dictionary;
+import com.myohanhtet.dirctonary.model.ResponseDirctionary;
 import com.myohanhtet.dirctonary.repository.DictionaryRepository;
 import com.myohanhtet.dirctonary.service.CSVService;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.mock.web.MockMultipartFile;
 
 @Controller
-@RequestMapping(path="/demo")
+@RequestMapping(path="/v1")
 public class MainController {
     @Autowired
-    private DictionaryRepository dictionaryRepository;
+    DictionaryRepository dictionaryRepository;
 
     @Autowired
     CSVService fileService;
 
-//    @GetMapping(path="/add")
-//    public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String password){
-//
-//
-//        dictionaryRepository.save(n);
-//        return "Saved";
-//    }
+    @GetMapping(path="/add")
+    public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String password){
 
-    @GetMapping(path = "/all")
-    public @ResponseBody Iterable<Dictionary> getAllUsers(){
-        return dictionaryRepository.findAll();
+        return "Saved";
     }
+
+    @PostMapping(path = "/entomm")
+    public Dictionary en2mm(@RequestBody String en){
+
+       return dictionaryRepository.findByWord(en);
+
+    }
+
 
     @GetMapping(path = "/upload")
     public String uploadDate() throws IOException {
         System.out.println("Upload Here");
         File file = new File("dblist.csv");
-        FileInputStream input =new FileInputStream(file);
+
         MultipartFile multipartFile = new MockMultipartFile("dblist.csv",new FileInputStream(file));
             try {
                 fileService.save(multipartFile);

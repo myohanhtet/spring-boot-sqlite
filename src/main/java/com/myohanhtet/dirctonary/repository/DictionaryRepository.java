@@ -3,7 +3,14 @@ package com.myohanhtet.dirctonary.repository;
 import com.myohanhtet.dirctonary.model.Dictionary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
-//CrudRepository<Dictionary, Long>
-public interface DictionaryRepository extends JpaRepository<Dictionary, Long> {
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+//CrudRepository<Dictionary, Long>
+//JpaRepository<Dictionary, Long>
+
+public interface DictionaryRepository extends CrudRepository<Dictionary, Long> {
+
+    Dictionary findByWord(String en);
 }

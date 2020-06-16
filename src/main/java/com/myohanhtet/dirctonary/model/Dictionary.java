@@ -1,6 +1,7 @@
 package com.myohanhtet.dirctonary.model;
 
 import javax.persistence.*;
+import java.lang.annotation.Documented;
 
 @Entity
 @Table(name = "dictionary")
@@ -55,5 +56,8 @@ public class Dictionary {
         this.word_en = word_en;
         this.state = state;
         this.def = def;
+    }
+
+    public Dictionary() {
     }
 }
